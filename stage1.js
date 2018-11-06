@@ -11,8 +11,8 @@ preload: function() {
           game.load.image('bullet', 'assets/bullets/bullet.png');
           game.load.image('enemy-green','assets/enemies/enemy2.png');
           game.load.image('enemy-blue','assets/enemies/enemy3.png');
-          game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
-          game.load.bitmapFont('spacefont', '/assets/spacefont/spacefont.png', '/assets/spacefont/spacefont.xml');
+          game.load.spritesheet('explosion', 'assets/explode.png', 128, 128);
+          game.load.bitmapFont('spacefont', 'assets/spacefont/spacefont.png', '/assets/spacefont/spacefont.xml');
           },
 
 create: function() {
