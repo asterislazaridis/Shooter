@@ -123,7 +123,7 @@ body {
 
 	    //  Launch wave
 	    for (var i = 0; i < numEnemiesInWave; i++) {
-		var enemy = enemies2.getFirstExists(false);
+		var enemy = blueEnemies.getFirstExists(false);
 		if (enemy) {
 			enemy.startingY = startingY;
 			enemy.reset(1200 + horizontalSpacing * i, game.height / 2);
