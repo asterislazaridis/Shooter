@@ -10,7 +10,7 @@ preload: function() {
           game.load.image('ship', 'assets/ship.png');
           game.load.image('bullet', 'assets/bullets/bullet.png');
           game.load.image('enemy-green','assets/enemies/enemy2.png');
-          game.load.image('enemy-blue','assets/enemies/blue-enemy.png');
+          game.load.image('enemy-blue','assets/enemies/enemy3.png');
           game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
           game.load.bitmapFont('spacefont', '/assets/spacefont/spacefont.png', '/assets/spacefont/spacefont.xml');
           },
@@ -95,6 +95,7 @@ create: function() {
         explosions.forEach( function(explosion) {
         explosion.animations.add('explosion');
             });
+          
   // blue blueEnemies
         blueEnemies = game.add.group();
         blueEnemies.enableBody = true;
