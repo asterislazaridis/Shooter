@@ -119,11 +119,11 @@ create: function() {
           };
           shields.render();
           
-   //scoreText
+  //  Score
           scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
           scoreText.render = function () {
-          scoreText.text = 'Score: ' + score;
-                };
+                    scoreText.text = 'Score: ' + score;
+          };
           scoreText.render();
           
   //gameOver
