@@ -37,7 +37,7 @@ body {
 			var fireButton;
 			var shields;
 			var greenEnemyLaunchTimer;
-			var bluenemyLaunchTimer;
+			var blueEnemyLaunchTimer;
 			var gameOver;
 			var bulletTimer = 0;
 			var ACCLERATION = 600;
@@ -140,6 +140,16 @@ body {
 				this.scale.y = 0.5 - Math.abs(bank) / 8;
 				this.angle = 180 - bank * 2;
 				
+		enemyBullet = blueEnemyBullets.getFirstExists(false);
+              if (enemyBullet && this.alive && this.bullets && this.x > game.width / 8 && game.time.now > firingDelay + this.lastShot) {
+                    this.lastShot = game.time.now;
+                    this.bullets--;
+                    enemyBullet.reset(this.x, this.y);
+                    enemyBullet.damageAmount = this.damageAmount;
+                    var angle = game.physics.arcade.moveToObject(enemyBullet, player, bulletSpeed);
+                    enemyBullet.angle = game.math.radToDeg(angle);
+                }
+				
 				//  Kill enemies once they go off screen
 				if (this.x < -200) {
 					this.kill();
@@ -194,6 +204,7 @@ body {
 			   game.time.events.add(1000, launchGreenEnemy);
 				
 				 blueEnemies.callAll('kill');
+				 blueEnemyBullets.callAll('kill');
     		game.time.events.remove(blueEnemyLaunchTimer);
 				game.time.events.add(7000, launchBlueEnemy);
 
@@ -206,6 +217,7 @@ body {
 
 	  //  Hide the text
 			  gameOver.visible = false;
+				
 
 			}
 
