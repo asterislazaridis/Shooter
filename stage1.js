@@ -11,6 +11,7 @@ preload: function() {
           game.load.image('bullet', 'assets/bullets/bullet.png');
           game.load.image('enemy-green','assets/enemies/enemy2.png');
           game.load.image('enemy-blue','assets/enemies/enemy3.png');
+          game.load.image('blueEnemyBullet', 'assets/bullets/blue-enemy-bullet.png');
           game.load.spritesheet('explosion', 'assets/explode.png', 128, 128);
           game.load.bitmapFont('spacefont', 'assets/font/font.png', 'assets/font/font.xml');
           },
@@ -111,6 +112,21 @@ create: function() {
                 });
 
         game.time.events.add(1000, launchBlueEnemy);
+          
+        //  Blue enemy's bullets
+        blueEnemyBullets = game.add.group();
+        blueEnemyBullets.enableBody = true;
+        blueEnemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
+        blueEnemyBullets.createMultiple(30, 'blueEnemyBullet');
+        blueEnemyBullets.callAll('crop', null, {x: 90, y: 0, width: 90, height: 70});
+        blueEnemyBullets.setAll('alpha', 0.9);
+        blueEnemyBullets.setAll('anchor.x', 0.5);
+        blueEnemyBullets.setAll('anchor.y', 0.5);
+        blueEnemyBullets.setAll('outOfBoundsKill', true);
+        blueEnemyBullets.setAll('checkWorldBounds', true);
+        blueEnemyBullets.forEach(function(enemy){
+             enemy.body.setSize(20, 20);
+          });  
 
   //shields
           shields = game.add.bitmapText(game.world.width - 250, 10, 'spacefont', '' + player.health +'%', 50);
@@ -184,6 +200,7 @@ update: function() {
       game.physics.arcade.overlap(greenEnemies, bullets, hitEnemy, null, this);
       game.physics.arcade.overlap(player, blueEnemies, shipCollide, null, this);
       game.physics.arcade.overlap(bullets, blueEnemies, hitEnemy, null, this);
+      game.physics.arcade.overlap(blueEnemyBullets, player, enemyHitsPlayer, null, this);
 
      //  Game over?
       if (! player.alive && gameOver.visible === false) {
