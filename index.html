@@ -221,6 +221,17 @@ body {
 				
 
 			}
+		
+	function enemyHitsPlayer (player, bullet) {
+    		var explosion = explosions.getFirstExists(false);
+    		explosion.reset(player.body.x + player.body.halfWidth, player.body.y + player.body.halfHeight);
+    		explosion.alpha = 0.7;
+    		explosion.play('explosion', 30, false, true);
+    		bullet.kill();
+    		player.damage(bullet.damageAmount);
+    		shields.render()
+}
+
 
 
 
