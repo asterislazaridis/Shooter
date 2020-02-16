@@ -7,8 +7,8 @@ varSTAGE2= {
           game.load.image('starfield','assets/starfield.png');
           game.load.image('ship', 'assets/ship.png');
           game.load.image('bullet', 'assets/bullets/bullet.png');
-          game.load.image('enemy-green','assets/enemies/enemy2.png');
-          game.load.image('enemy-blue','assets/enemies/enemy3.png');
+          game.load.image('enemy-green','assets/enemies/blue-enemy.png');
+          game.load.image('enemy-blue','assets/enemies/enemy2.png');
           game.load.image('blueEnemyBullet', 'assets/bullets/blue-enemy-bullet.png');
           game.load.spritesheet('explosion', 'assets/explode.png', 128, 128);
           game.load.bitmapFont('spacefont', 'assets/font/font.png', 'assets/font/font.xml');
